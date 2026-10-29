@@ -17,10 +17,12 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(glm)
 
-add_library(glad INTERFACE)
+add_library(glad)
 
 target_sources(glad
-    INTERFACE
+    PUBLIC
+        src/glad/glad.c
+    PUBLIC
         FILE_SET HEADERS
         BASE_DIRS 
             include
