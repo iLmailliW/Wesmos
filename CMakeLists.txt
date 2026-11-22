@@ -19,6 +19,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(glm)
 
+
+
 add_library(glad)
 
 target_sources(glad
@@ -32,88 +34,9 @@ target_sources(glad
             include/glad/glad.h
 )
 
-add_library(shaderprogram)
+add_subdirectory(src)
 
-target_sources(shaderprogram
-    PRIVATE
-        src/shaderprogram.cpp
-    PUBLIC
-        FILE_SET HEADERS
-        BASE_DIRS
-            include
-        FILES
-            include/shaderprogram.h
-)
-
-target_link_libraries(shaderprogram
-    PUBLIC
-        glfw
-        glad
-)
-
-add_library(projection INTERFACE)
-
-target_sources(projection 
-    INTERFACE
-        FILE_SET HEADERS
-        BASE_DIRS
-            include
-        FILES
-            include/projection.h
-)
-
-add_library(ast)
-
-target_sources(ast
-    PRIVATE
-        src/ast.cpp
-    PUBLIC
-        FILE_SET HEADERS
-        BASE_DIRS
-            include
-        FILES
-            include/ast.h
-)
-
-add_library(graph)
-
-target_sources(graph
-    PRIVATE
-        src/graph.cpp
-    PUBLIC
-        FILE_SET HEADERS
-        BASE_DIRS
-            include
-        FILES
-            include/graph.h
-)
-
-
-add_library(lexer)
-
-target_sources(lexer
-    PRIVATE
-        src/lexer.cpp
-    PUBLIC
-        FILE_SET HEADERS
-        BASE_DIRS
-            include
-        FILES
-            include/lexer.h
-)
-
-add_library(parser)
-
-target_sources(parser
-    PRIVATE
-        src/parser.cpp
-    PUBLIC
-        FILE_SET HEADERS
-        BASE_DIRS
-            include
-        FILES
-            include/parser.h
-)
+add_subdirectory(tests)
 
 add_executable(Wesmos)
 

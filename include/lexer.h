@@ -1,10 +1,24 @@
 #pragma once
 
 #include <string>
-#include <unordered_map>
+#include <map>
+#include <ranges>
+#include <vector>
+#include <algorithm>
 
 namespace lexer {
     enum class TOKEN{
+        ZERO,
+        ONE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        E,
         OPEN,
         CLOSE,
         X,
@@ -14,7 +28,6 @@ namespace lexer {
         SUB,
         MULT,
         DIV,
-        EXP,
         LOG,
         SIN,
         COS,
@@ -24,18 +37,13 @@ namespace lexer {
         ARCTAN,
         POW,
         ABS,
-        COUNT,
-        NONE
+        DECIMAL,
+        COUNT
     };
-
-    std::unordered_map<std::string, TOKEN> symbol_table = []() -> auto {
-        using enum TOKEN;
-        return std::unordered_map<std::string, TOKEN>();
-    }();
-
-    /// @brief returns the next symbol
-    /// @return 
-    TOKEN regex(std::string expression);
-
     
+    /// @brief returns the next symbol, modifying expression
+    /// @return 
+    TOKEN try_next_token(std::string_view& expression);
+
+    std::vector<TOKEN> regex(std::string expresssion);
 }
