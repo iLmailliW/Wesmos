@@ -30,6 +30,8 @@ target_sources(projection
             ../include/projection.h
 )
 
+set(AST_EPSILON "1e-9" CACHE STRING "Default floating-point epsilon for ast")
+
 add_library(ast)
 
 target_sources(ast
@@ -41,6 +43,11 @@ target_sources(ast
             ../include
         FILES
             ../include/ast.h
+)
+
+target_compile_definitions(ast
+    PRIVATE
+        AST_EPSILON = ${AST_EPSILON}
 )
 
 add_library(graph)

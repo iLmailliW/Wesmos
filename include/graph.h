@@ -2,7 +2,7 @@
 
 #include <vector>
 
-class Graph{
+class Graph {
 public:
     int lod;
     float x_start;

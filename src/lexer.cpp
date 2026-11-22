@@ -1,6 +1,7 @@
 #include <lexer.h>
 #include <utility>
 #include <stdexcept>
+#include <ranges>
 
 namespace lexer{
     const std::vector<std::pair<std::string, TOKEN>> SYMBOL_TABLE = []() -> auto {

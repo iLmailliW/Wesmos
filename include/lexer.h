@@ -1,10 +1,7 @@
 #pragma once
 
 #include <string>
-#include <map>
-#include <ranges>
 #include <vector>
-#include <algorithm>
 
 namespace lexer {
     enum class TOKEN{
